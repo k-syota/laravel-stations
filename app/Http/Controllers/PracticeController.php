@@ -8,18 +8,18 @@ class PracticeController extends Controller
 {
     public function sample()
     {
-        return response('practice');
+        return view('practice');
     }
 
 	  public function sample2()
     {
-        $test = 'practice2';
-		    return response($test);
+        $testParam = 'practice2';
+		    return view("practice2",compact("testParam"));
     }
 
-    public function test()
+    public function sample3()
     {
-        $test = 'test';
-		    return response($test);
+        $testParam = 'test';
+		    return view("practice3",compact("testParam"));
     }
 }

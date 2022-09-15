@@ -33,4 +33,4 @@ Route::get('practice3', function () {
 
 Route::get('practice', [PracticeController::class,"sample"]);
 Route::get('practice2', [PracticeController::class,"sample2"]);
-Route::get('practice3', [PracticeController::class,"test"]);
+Route::get('practice3', [PracticeController::class,"sample3"]);
