@@ -17,6 +17,9 @@ return new class extends Migration
             $table->unsignedBigInteger("id")->autoIncrement()->comment("ID");
             $table->text("title")->comment("映画タイトル");
             $table->text("image_url")->comment("画像URL");
+            $table->integer("published_year")->comment("公開年");
+            $table->tinyInteger("is_showing")->default(false)->comment("上映中かどうか");
+            $table->text("description")->comment("概要");
             $table->timestamp("created_at")->comment("登録日時");
             $table->timestamp("updated_at")->comment("更新日時");
         });

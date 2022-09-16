@@ -10,10 +10,26 @@
 
 <body>
     <ul>
-        @foreach ($records as $record)
-            <li>タイトル: {{ $record->title }}</li>
-            <li>画像: <img src="{{ $record->image_url }}" alt=""> </li>
-        @endforeach
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>タイトル</th>
+                <th>画像</th>
+                <th>公開年</th>
+                <th>上映中？</th>
+                <th>概要</th>
+            </tr>
+            @foreach ($records as $record)
+                <tr>
+                    <td>{{ $record->id }}</td>
+                    <td>{{ $record->title }}</td>
+                    <td><img src="{{ $record->image_url }}" alt=""></td>
+                    <td>{{ $record->published_year }}</td>
+                    <td>{{ $record->is_showing }}</td>
+                    <td>{{ $record->description }}</td>
+                </tr>
+            @endforeach
+        </table>
     </ul>
 </body>
 
