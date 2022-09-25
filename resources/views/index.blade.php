@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <a href="http://localhost:8888/admin/movies/create">
+        <p>作成画面へ</p>
+    </a>
     <ul>
         <table>
             <tr>
@@ -18,15 +21,19 @@
                 <th>公開年</th>
                 <th>上映中？</th>
                 <th>概要</th>
+                <th>作成日</th>
+                <th>更新日</th>
             </tr>
             @foreach ($records as $record)
                 <tr>
-                    <td>{{ $record->id }}</td>
+                    {{-- <td>{{ $record->id }}</td> --}}
                     <td>{{ $record->title }}</td>
-                    <td><img src="{{ $record->image_url }}" alt=""></td>
+                    <td>{{ $record->image_url }}</td>
                     <td>{{ $record->published_year }}</td>
                     <td>{{ $record->is_showing }}</td>
                     <td>{{ $record->description }}</td>
+                    {{-- <td>{{ $record->created_at }}</td>
+                    <td>{{ $record->updated_at }}</td> --}}
                 </tr>
             @endforeach
         </table>
