@@ -33,7 +33,16 @@
                     <td>{{ $record->is_showing }}</td>
                     <td>{{ $record->description }}</td>
                     <td>
-                        <a href="{{ route("movie.edit",[$record->id]) }}">編集</a>
+                        <a href="{{ route('movie.edit', [$record->id]) }}">
+                            <button>編集</button>
+                        </a>
+                    </td>
+                    <td>
+                        <form action="{{ route('movie.destroy',[$record->id] ) }}" method="post">
+                            @csrf
+                            @method("delete")
+                            <button type="submit" onclick="return confirm('削除します。よろしいですか？')">削除</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

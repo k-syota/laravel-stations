@@ -44,7 +44,7 @@
         </label><br>
 
         {{-- <input type="text" name="title"> --}}
-        <button type="submit">作成</button>
+        <button type="submit">更新</button>
     </form>
 </body>
 </html>

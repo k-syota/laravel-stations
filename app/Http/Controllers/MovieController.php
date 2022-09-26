@@ -71,4 +71,10 @@ class MovieController extends Controller
 
         return redirect("admin/movies/index");
     }
+
+    public function destroy($id){
+        $record = Movie::findOrFail($id);
+        $record->delete();
+        return redirect("admin/movies/index");
+    }
 }
