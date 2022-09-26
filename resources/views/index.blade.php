@@ -15,14 +15,14 @@
     <ul>
         <table>
             <tr>
-                <th>ID</th>
+                {{-- <th>ID</th> --}}
                 <th>タイトル</th>
                 <th>画像</th>
                 <th>公開年</th>
                 <th>上映中？</th>
                 <th>概要</th>
-                <th>作成日</th>
-                <th>更新日</th>
+                {{-- <th>作成日</th>
+                <th>更新日</th> --}}
             </tr>
             @foreach ($records as $record)
                 <tr>
@@ -32,8 +32,9 @@
                     <td>{{ $record->published_year }}</td>
                     <td>{{ $record->is_showing }}</td>
                     <td>{{ $record->description }}</td>
-                    {{-- <td>{{ $record->created_at }}</td>
-                    <td>{{ $record->updated_at }}</td> --}}
+                    <td>
+                        <a href="{{ route("movie.edit",[$record->id]) }}">編集</a>
+                    </td>
                 </tr>
             @endforeach
         </table>

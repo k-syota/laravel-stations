@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use Illuminate\Http\Request;
-use Validator;
+// use Validator;
 
 class MovieController extends Controller
 {
@@ -37,14 +37,37 @@ class MovieController extends Controller
             "description" => $request->description,
         ]);
 
-        // $newMovie = Movie::create([
-        //     "title" => $validate['title'],
-        //     "image_url" => $validate['image_url'],
-        //     "published_year" => $validate['published_year'],
-        //     "is_showing" => $validate['is_showong'],
-        //     "description" => $validate['description'],
-        // ]);
-        // $newMovie->save();
+        return redirect("admin/movies/index");
+    }
+
+    public function edit($id){
+        $record = Movie::findOrFail($id);
+        return view("edit",compact("record"));
+    }
+
+    public function update($id, Request $request){
+        $record = Movie::findOrFail($id);
+
+
+        $validate = $request->validate(
+            [
+                "title" => 'required|unique:movies,title',
+                "image_url" => 'required|url',
+                "published_year" => 'required|numeric',
+                "is_showing" => 'required',
+                "description" => 'required',    
+            ]
+            );
+
+        $record = $record->update([
+            "title" => $validate['title'],
+            "image_url" => $request->image_url,
+            "published_year" => $request->published_year,
+            "is_showing" => $request->is_showing,
+            "description" => $request->description,
+        ]);
+
+        // dd($record);
 
         return redirect("admin/movies/index");
     }
