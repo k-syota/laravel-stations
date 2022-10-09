@@ -8,10 +8,44 @@
     <title>MovieIndex</title>
 </head>
 
-<body>
-    <a href="http://localhost:8888/admin/movies/create">
+<body style="text-align: center">
+    <a href="{{ route('movie.create') }}">
         <p>作成画面へ</p>
     </a>
+    <a href="{{ route('movie.index') }}">
+        <p>一覧へ</p>
+    </a>
+
+    <div>
+        <p>検索フォーム</p>
+        <form action="{{ route('movie.index') }}" method="get">
+            <input type="text" value="" name="keyword" placeholder="何か入力してください"><br>
+            <label for="status">
+                全て
+                <input type="radio" name="status" id="">
+            </label>
+            <label for="status">
+                公開中
+                <input type="radio" name="status" id="" value="1">
+            </label>
+            <label for="status">
+                公開予定
+                <input type="radio" name="status" id="" value="0">
+            </label><br>
+            <button type="submit">検索</button>
+        </form>
+    </div>
+
+    @if (isset($keyword))
+        {{ $keyword }}
+        {{-- {{ $status  }} --}}
+    @endif
+
+    @if (isset($status))
+        {{-- {{ $keyword }} --}}
+        {{ $status }}
+    @endif
+
     <ul>
         <table>
             <tr>
@@ -30,7 +64,13 @@
                     <td>{{ $record->title }}</td>
                     <td>{{ $record->image_url }}</td>
                     <td>{{ $record->published_year }}</td>
-                    <td>{{ $record->is_showing }}</td>
+                    <td>
+                    @if ($record->is_showing)
+                        公開中
+                    @else
+                        公開予定
+                    @endif
+                    </td>
                     <td>{{ $record->description }}</td>
                     <td>
                         <a href="{{ route('movie.edit', [$record->id]) }}">
@@ -38,9 +78,9 @@
                         </a>
                     </td>
                     <td>
-                        <form action="{{ route('movie.destroy',[$record->id] ) }}" method="post">
+                        <form action="{{ route('movie.destroy', [$record->id]) }}" method="post">
                             @csrf
-                            @method("delete")
+                            @method('delete')
                             <button type="submit" onclick="return confirm('削除します。よろしいですか？')">削除</button>
                         </form>
                     </td>

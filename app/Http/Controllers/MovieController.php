@@ -4,13 +4,44 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 // use Validator;
 
 class MovieController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         $records = Movie::all();
-        return view("index",compact("records"));
+        $keyword = $request->input('keyword');
+        $status = $request->input('status');
+
+        $query = Movie::query();
+        if($keyword){
+            $spaceConversion = mb_convert_kana($keyword, 's');
+
+            $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+
+            foreach($wordArraySearched as $value){
+                // $query->where('title','like','%'.$value.'%')
+                $query->where(DB::raw("CONCAT(title,'',description)"),'like','%'.$value.'%');
+            }
+        }
+
+        if(isset($status)){
+            $query->where("is_showing", $status);
+            if($status == 3 || $status === 0){
+                $query->where("is_showing", 1);
+            }
+        }
+
+        $records = $query->get();
+
+        // if($status === null || $status == 3){
+        //     $records = Movie::all();
+        // }
+
+
+        return view("index",compact("records","keyword","status"));
     }
 
     public function create(){
