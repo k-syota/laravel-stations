@@ -7,9 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/style.css" >
     <title>Document</title>
+    <style>
+        table{
+            background-color: antiquewhite;
+            margin: auto;
+        }
+        tr{
+            display: flex;
+            flex-wrap: wrap;
+            width: 510px;
+            text-align: center
+        }
+        td{
+            width: 100px;
+        }
+    </style>
 </head>
 
 <body>
+    <p style="text-align: center" >スクリーン</p>
     <table>
         <thead>
             <tr>
