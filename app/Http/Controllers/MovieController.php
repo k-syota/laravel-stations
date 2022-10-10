@@ -30,16 +30,11 @@ class MovieController extends Controller
         if(isset($status)){
             $query->where("is_showing", $status);
             if($status == 3 || $status === 0){
-                $query->where("is_showing", 1);
+                $query->get();
             }
         }
 
         $records = $query->get();
-
-        // if($status === null || $status == 3){
-        //     $records = Movie::all();
-        // }
-
 
         return view("index",compact("records","keyword","status"));
     }
