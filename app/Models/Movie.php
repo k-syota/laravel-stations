@@ -16,4 +16,9 @@ class Movie extends Model
         'description',
         'is_showing'
     ];
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }

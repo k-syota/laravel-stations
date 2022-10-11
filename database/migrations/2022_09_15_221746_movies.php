@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('movies', function (Blueprint $table) {
-            $table->unsignedBigInteger("id")->autoIncrement()->comment("ID");
+            $table->unsignedBigInteger("id")->unique()->autoIncrement()->comment("ID");
             $table->text("title")->comment("映画タイトル");
             $table->text("image_url")->comment("画像URL");
             $table->integer("published_year")->comment("公開年");
