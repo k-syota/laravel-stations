@@ -84,6 +84,11 @@
                             <button type="submit" onclick="return confirm('削除します。よろしいですか？')">削除</button>
                         </form>
                     </td>
+                    <td>
+                        <a href="{{ route('movie.show',[$record->id]) }}">
+                            詳細
+                        </a>
+                    </td>
                 </tr>
             @endforeach
         </table>

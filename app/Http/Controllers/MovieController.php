@@ -39,6 +39,12 @@ class MovieController extends Controller
         return view("index",compact("records","keyword","status"));
     }
 
+    public function show($id)
+    {
+        $record = Movie::findOrFail($id);
+        return view("movie.show",compact("record"));
+    }
+
     public function create(){
         return view("create");
     }
