@@ -58,6 +58,7 @@
         <tr>
             <td>{{ $schedule->start_time }}</td>
             <td>{{ $schedule->end_time }}</td>
+            <td><a href="{{ route('schedule.show',[$schedule->id]) }}">詳細</a></td>
         </tr>
     @endforeach
 

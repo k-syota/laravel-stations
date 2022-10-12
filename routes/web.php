@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PracticeController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SheetController;
 
 /*
@@ -46,4 +47,12 @@ Route::get('admin/movies/{id}/edit', [MovieController::class,"edit"])->name("mov
 Route::get('admin/movies/{id}/', [MovieController::class,"show"])->name("movie.show");
 Route::post('admin/movies/{id}/update', [MovieController::class,"update"])->name("movie.update");
 Route::delete('admin/movies/{id}/destroy', [MovieController::class,"destroy"])->name("movie.destroy");
+
+Route::get('admin/schedules/', [ScheduleController::class,"index"])->name("schedule.index");
+Route::get('admin/schedules/{id}/', [ScheduleController::class,"show"])->name("schedule.show");
+Route::get('admin/movies/{id}/schedules/create', [ScheduleController::class,"create"])->name("schedule.create");
+Route::get('admin/schedules/{id}/edit', [ScheduleController::class,"edit"])->name("schedule.edit");
+Route::post('admin/schedules/{id}/update', [ScheduleController::class,"update"])->name("schedule.update");
+Route::delete('admin/schedules/{id}/destroy', [ScheduleController::class,"destroy"])->name("schedule.destroy");
+
 Route::get('sheets', [SheetController::class,"index"])->name("sheet.index");
