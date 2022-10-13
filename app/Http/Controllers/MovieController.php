@@ -36,7 +36,7 @@ class MovieController extends Controller
 
         $records = $query->get();
 
-        return view("index",compact("records","keyword","status"));
+        return view("movie.index",compact("records","keyword","status"));
     }
 
     public function show($id)
@@ -48,7 +48,7 @@ class MovieController extends Controller
     }
 
     public function create(){
-        return view("create");
+        return view("movie.create");
     }
 
     public function store(Request $request){
@@ -76,7 +76,7 @@ class MovieController extends Controller
 
     public function edit($id){
         $record = Movie::findOrFail($id);
-        return view("edit",compact("record"));
+        return view("movie.edit",compact("record"));
     }
 
     public function update($id, Request $request){

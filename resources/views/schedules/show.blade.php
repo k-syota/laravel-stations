@@ -1,7 +1,13 @@
-<h1>{{ $schedule->movie->title }}</h1>
+<h1>
+   映画タイトル：{{ $schedule->movie->title }}
+</h1>
 
-<p>{{ $schedule->start_time }}</p>
-<p>{{ $schedule->end_time }}</p>
+<p>
+    上映開始時間：{{ $schedule->start_time }}
+</p>
+<p>
+    上映終了時間：{{ $schedule->end_time }}
+</p>
 
 <a href="{{ route('schedule.edit', [$schedule->id]) }}">編集</a>
 
@@ -12,3 +18,7 @@
         削除
     </button>
 </form>
+
+<button>
+    <a href="{{ route('schedule.index') }}">スケジュール一覧へ</a>
+</button>

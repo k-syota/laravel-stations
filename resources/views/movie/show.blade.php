@@ -59,6 +59,11 @@
             <td>{{ $schedule->start_time }}</td>
             <td>{{ $schedule->end_time }}</td>
             <td><a href="{{ route('schedule.show',[$schedule->id]) }}">詳細</a></td>
+            <td>
+                <a href="{{ route('sheet.show',['id'=>$schedule->movie->id,'schedule_id'=>$schedule->id,'screening_date'=>now()->format('Ymd')]) }}">
+                    座席を予約する
+                </a>
+            </td>
         </tr>
     @endforeach
 

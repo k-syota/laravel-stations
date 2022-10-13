@@ -12,8 +12,8 @@
     <a href="{{ route('movie.create') }}">
         <p>作成画面へ</p>
     </a>
-    <a href="{{ route('movie.index') }}">
-        <p>一覧へ</p>
+    <a href="{{ route('schedule.index') }}">
+        <p>スケジュール一覧へ</p>
     </a>
 
     <div>

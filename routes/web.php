@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PracticeController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SheetController;
 
@@ -56,3 +57,7 @@ Route::post('admin/schedules/{id}/update', [ScheduleController::class,"update"])
 Route::delete('admin/schedules/{id}/destroy', [ScheduleController::class,"destroy"])->name("schedule.destroy");
 
 Route::get('sheets', [SheetController::class,"index"])->name("sheet.index");
+
+Route::get('movies/{id}/schedules/{schedule_id}/reservatios/create',[ReservationController::class,"create"])->name("reservation.create");
+Route::post('movies/{id}/schedules/{schedule_id}/reservatios/store',[ReservationController::class,"store"])->name("reservation.store");
+Route::get('movies/{id}/schedules/{schedule_id}/sheets',[SheetController::class,"show"])->name("sheet.show");
