@@ -16,4 +16,14 @@ class Reservation extends Model
         'schedule_id',
         'sheet_id',
     ];
+
+    // public function sheet()
+    // {
+    //     return $this->belongsTo(Sheet::class);
+    // }
+
+    // public function schedule()
+    // {
+    //     return $this->belongsTo(Schedule::class);
+    // }
 }

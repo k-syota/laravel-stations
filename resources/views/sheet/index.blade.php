@@ -5,27 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/style.css" >
+    <link rel="stylesheet" href="/css/style.css">
     <title>Document</title>
     <style>
-        table{
+        table {
             background-color: antiquewhite;
             margin: auto;
         }
-        tr{
+
+        tr {
             display: flex;
             flex-wrap: wrap;
             width: 510px;
             text-align: center
         }
-        td{
+
+        td {
             width: 100px;
         }
     </style>
 </head>
 
 <body>
-    <p style="text-align: center" >スクリーン</p>
+    <p style="text-align: center">スクリーン</p>
     <table>
         <thead>
             <tr>
@@ -37,7 +39,15 @@
             <tr>
                 @foreach ($sheets as $sheet)
                     <td>
-                        {{ $sheet->row }}-{{ $sheet->column }}
+                        @if ($sheet->reservation_id)
+                            {{ $sheet->row }}-{{ $sheet->column }}
+                        @else
+                            <a
+                                href="{{ route('reservation.create', ['id' => $movie->id, 'schedule_id' => $schedule->id, 'sheet_id' => $sheet->id, 'screening_date' => now()->format('Ymd')]) }}">
+                                {{ $sheet->row }}-{{ $sheet->column }}
+                            </a>
+                        @endif
+
                     </td>
                 @endforeach
             </tr>

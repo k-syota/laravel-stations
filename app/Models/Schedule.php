@@ -18,4 +18,9 @@ class Schedule extends Model
     {
         return $this->belongsTo(Movie::class);
     }
+
+    public function sheets()
+    {
+        return $this->belongsToMany(Sheet::class,'reservations');
+    }
 }

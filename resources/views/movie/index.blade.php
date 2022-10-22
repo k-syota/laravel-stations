@@ -16,6 +16,10 @@
         <p>スケジュール一覧へ</p>
     </a>
 
+    @if (session("message"))
+        <p>{{ session("message") }}</p>
+    @endif
+
     <div>
         <p>検索フォーム</p>
         <form action="{{ route('movie.index') }}" method="get">

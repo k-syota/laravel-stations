@@ -43,7 +43,7 @@ class MovieController extends Controller
     {
         $record = Movie::findOrFail($id);
         $schedules = $record->schedules;
-        // dd($schedules); 
+        // dd($schedules);
         return view("movie.show",compact("record","schedules"));
     }
 

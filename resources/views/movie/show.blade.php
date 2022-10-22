@@ -1,5 +1,9 @@
 <h1>詳細画面</h1>
 
+@if (session("message"))
+    <p>{{ session("message") }}</p>
+@endif
+
 <table>
     <tr>
         {{-- <th>ID</th> --}}
@@ -60,7 +64,7 @@
             <td>{{ $schedule->end_time }}</td>
             <td><a href="{{ route('schedule.show',[$schedule->id]) }}">詳細</a></td>
             <td>
-                <a href="{{ route('sheet.show',['id'=>$schedule->movie->id,'schedule_id'=>$schedule->id,'screening_date'=>now()->format('Ymd')]) }}">
+                <a href="{{ route('sheet.index',['id'=>$schedule->movie->id,'schedule_id'=>$schedule->id,'screening_date'=>now()->format('Ymd')]) }}">
                     座席を予約する
                 </a>
             </td>
